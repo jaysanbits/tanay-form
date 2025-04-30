@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 app.post('/submit', (req, res) => {
     const now = new Date();
     if (now > cutoffDate) {
-        return res.send('<h2>Submissions are closed. You cannot submit the form anymore.</h2>');
+        return res.status(401).json({message:"Submissions are closed"});
     }
 
     let {
