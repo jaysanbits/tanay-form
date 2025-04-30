@@ -6,24 +6,13 @@ const port = 3000;
 
 app.use(cors());
 
-// Hardcoded cutoff date (e.g., May 1, 2025)
-const cutoffDate = new Date('2025-05-01T00:00:00Z');
+const cutoffDate = new Date('2025-06-20T00:00:00Z');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/', (req, res) => {
-    const now = new Date();
-    if (now > cutoffDate) {
-        return res.send('<h2>Form submissions are now closed.</h2>');
-    }
-
-    // Simple HTML form
-    res.send(`
-        <form action="/submit" method="POST">
-            <input type="text" name="name" placeholder="Enter your name" required />
-            <button type="submit">Submit</button>
-        </form>
-    `);
+    res.send(`Running Server`);
 });
 
 app.post('/submit', (req, res) => {
@@ -39,7 +28,7 @@ app.post('/submit', (req, res) => {
 }= req.body;
 
     if(!fullName || !phoneNumber || !address){
-        return res.send('<h2>All fields are required.</h2>');
+        return res.status(400).json({message:"All fields are required"});
     } 
     
 
