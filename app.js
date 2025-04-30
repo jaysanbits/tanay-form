@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 // Hardcoded cutoff date (e.g., May 1, 2025)
 const cutoffDate = new Date('2025-05-01T00:00:00Z');
