@@ -33,7 +33,7 @@ app.post('/submit', (req, res) => {
     
 
 const whatsappNumber = '917416161603';
-const message = encodeURIComponent(`Hello, here are my details.\nName:${fullName}\nPhone Number:${phoneNumber}\nAddress:${address}`);
+const message = encodeURIComponent(`Hello, here are my details.\nName : ${fullName}\nPhone Number : ${phoneNumber}\nAddress : ${address}`);
 const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
     res.status(200).json({redirectUrl: whatsappLink });
 });
